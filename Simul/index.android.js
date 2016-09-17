@@ -9,24 +9,21 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
+
+import Enter from './app/components/enter'
 
 class Simul extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-        SIMUL
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Navigator
+        initialRoute={{ title: 'Enter', index: 0 }}
+        renderScene={(route, navigator) => {
+          return <Enter title={route.title} />
+        }}
+      />
     );
   }
 }
