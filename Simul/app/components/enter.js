@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-class Enter extends Component{
+export default class Enter extends Component{
   render() {
     return (
       <View style={styles.container}>
@@ -57,5 +57,3 @@ var styles = StyleSheet.create({
     color: 'white',
   }
 });
-
-module.exports = Enter;
