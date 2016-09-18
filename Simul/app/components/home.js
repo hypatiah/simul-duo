@@ -85,7 +85,7 @@ class Home extends Component{
   _onPressStory(clickedStory) {
     this.props.navigator.push({
       title: I18n.t('story'),
-      component: Story,
+      id: 'Story',
       tintColor: "#29c5da",
       passProps: {story: clickedStory},
     })

@@ -10,6 +10,7 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
   Navigator,
 } from 'react-native';
 
