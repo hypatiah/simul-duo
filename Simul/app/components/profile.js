@@ -25,7 +25,8 @@ class Profile extends Component{
       userId: 2,
       name: 'Mohammad Malouf',
       username: 'papa13',
-      messages: "ladeeda",
+      messages: 'ladeeda',
+      amount: '',
       // stories: this.props.stories,
     }
   }
@@ -90,9 +91,27 @@ class Profile extends Component{
 
 // fake person that works https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnl2wCrCFBw9PnHukDYg6weIBSIMdSi8vSguLE6tjaRcps8OOw
 
-  _onPressGive() {
-
+  async _onPressGive() {
+    let response = await fetch(`https://simulnos.herokuapp.com/api/users/2/donations`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          user_id: 2,
+          amount: this.state.amount,
+      })
+    })
+    let res = await response.json();
+      this.props.navigator.push({
+        title: 'Profile',
+        id: 'Profile',
+        tintColor: "#29c5da",
+        passProps: { userId: this.state.user_Id, message: res.message, name: this.state.name},
+      })
   }
+  
   render() {
 
 
@@ -138,7 +157,7 @@ class Profile extends Component{
 
          <View style={styles.donate}>
             <TextInput
-              onChangeText={ (val)=> this.setState({username: val}) }
+              onChangeText={ (val)=> this.setState({amount: val}) }
               placeholder="Enter amount in $"
               style={{ flex: 5, textAlign: 'center', backgroundColor: 'white', borderColor: '#27c2dc', borderWidth: 1}}
             />
