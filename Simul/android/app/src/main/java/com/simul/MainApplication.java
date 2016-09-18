@@ -1,5 +1,7 @@
 package com.simul;
 
+import com.i18n.reactnativei18n.ReactNativeI18n;  // <-- Add to ReactNativeI18n to the imports
+
 import android.app.Application;
 import android.util.Log;
 
@@ -23,7 +25,8 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+          new ReactNativeI18n() // <-- Add it to the packages list
       );
     }
   };
