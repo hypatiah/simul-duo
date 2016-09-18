@@ -90,11 +90,26 @@ class Simul extends Component {
               return route.sceneConfig;
             }
             return Navigator.SceneConfigs.FloatFromRight;
-          }} />
+          }}
+
+      />
     );
   }
 }
-
+//NAV BAR ATTEMPT
+// navigationBar={
+// <Navigator.NavigationBar
+// routeMapper={{
+//   LeftButton: (route, navigator, index, navState) =>
+//    { return (<Text>Cancel</Text>); },
+//   RightButton: (route, navigator, index, navState) =>
+//     { return (<Text>Done</Text>); },
+//   Title: (route, navigator, index, navState) =>
+//     { return (<Text>Awesome Nav Bar</Text>); },
+// }}
+// style={{backgroundColor: 'gray'}}
+// />
+// }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
