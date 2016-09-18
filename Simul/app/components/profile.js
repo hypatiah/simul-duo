@@ -57,7 +57,14 @@ class Profile extends Component{
       passProps: { userId: this.state.userId, name: this.state.name, messages: this.state.messages },
     })
   }
-
+  _onPressContact(){
+      this.props.navigator.push({
+        title: I18n.t('contact'),
+        tintColor: "#29c5da",
+        id: 'Contact',
+        passProps: { userId: this.state.userId, name: this.state.name },
+      })
+    }
   latestStory() {
     // var recentStory = this.state.userId.stories.slice(-1)[0]
     return(
@@ -157,7 +164,7 @@ class Profile extends Component{
             <Text style={styles.buttonText}> {"All " + I18n.t('stories') + " by Mohammed"} </Text>
           </TouchableHighlight>
 
-          <TouchableHighlight style={styles.button}>
+          <TouchableHighlight onPress={() => this._onPressContact()} style={styles.button}>
             <Text style={styles.buttonText}>
               {I18n.t('contact')}
             </Text>
