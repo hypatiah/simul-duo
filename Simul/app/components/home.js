@@ -87,7 +87,7 @@ class Home extends Component{
       title: I18n.t('story'),
       id: 'Story',
       tintColor: "#29c5da",
-      passProps: {story: clickedStory},
+      passProps: {storyId: clickedStory.id, userId: clickedStory.user_id},
     })
   }
 
@@ -114,8 +114,6 @@ class Home extends Component{
       var photo = recentStory.photo
     }
 
-    console.log(recentStory);
-
       return(
         <View style={{backgroundColor: 'white' }}>
 
@@ -124,7 +122,7 @@ class Home extends Component{
         <Image source={{uri: photo }} style={{width: 400, height: 225}}/>
 
           <TouchableHighlight onPress={ () => this._onPressFeaturedStory()}>
-            <Text style={{color: '#4a4c4d', textAlign: 'center', padding: 5, fontFamily: 'Farah', fontSize: 16, paddingTop: 15, }}>{ recentStory.content }</Text>
+            <Text style={{color: '#4a4c4d', textAlign: 'center', padding: 5, fontFamily: 'Avenir-Roman', fontSize: 16, paddingTop: 15, }}>{ recentStory.content }</Text>
           </TouchableHighlight>
 
         <TouchableHighlight onPress={ () => this._onPressFeaturedProfile()}>
@@ -152,6 +150,8 @@ class Home extends Component{
   //
   // <Search />
   render() {
+    console.log("************************STATE:: *********")
+    console.log(this.state)
     return (
       <View style={styles.container}>
 
@@ -197,9 +197,9 @@ var styles = StyleSheet.create({
   },
   listText: {
     backgroundColor: '#29c5da',
-    fontFamily: 'Farah',
+    fontFamily: 'Avenir-Roman',
     fontWeight: "normal",
-    fontSize: 18,
+    fontSize: 17,
     color: 'white',
     textAlign: 'center',
     alignItems: 'center',
@@ -216,7 +216,7 @@ var styles = StyleSheet.create({
   navLeft: {
     flex: .25,
     color: '#29c5da',
-    fontFamily: 'Farah',
+    fontFamily: 'Avenir-Roman',
     backgroundColor: 'white',
     textAlign: 'center',
     marginRight: 110,
@@ -225,7 +225,7 @@ var styles = StyleSheet.create({
   navRight: {
     flex: .25,
     color: '#29c5da',
-    fontFamily: 'Farah',
+    fontFamily: 'Avenir-Roman',
     backgroundColor: 'white',
     textAlign: 'center',
     marginLeft: 110,

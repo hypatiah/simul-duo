@@ -18,50 +18,45 @@ class Story extends Component{
   constructor(props) {
     super(props);
     this.state = {
-
-      user: '?',
+      story: '?',
     };
   }
 
-  componentDidMount() {
-    this.fetchData().done()
-  }
+  // componentDidMount() {
+  //   this.fetchData().done()
+  // }
 
-  async fetchData() {
-    var url = "https://simulnos.herokuapp.com/api/users/" + this.props.story.user_id
-    const response = await fetch(url)
-    const json = await response.json()
-    const user = json.user
-    this.setState({user: user})
-    }
+  // async fetchData() {
+  //   var url = "https://simulnos.herokuapp.com/api/users/2/stories"
+  //   const response = await fetch(url)
+  //   const json = await response.json()
+  //   const story = json.stories[0]
+  //   this.setState({story: story})
+  //   }
 
   _onPressProfile() {
-    api.getUser(this.props.story.user_id).then((res) => {
       this.props.navigator.push({
-        title: res.user.username,
+        title: 'papa13',
         tintColor: "#29c5da",
-        component: Profile,
-        passProps: {user: res.user, messages: res.messages, stories: res.stories}
+        id: 'Profile',
+        // passProps: {user: res.user, messages: res.messages, stories: res.stories}
       })
-    })
   }
 
   render() {
-    if (this.props.story.photo!== null){
-      var photo = this.props.story.photo
-    }
+    var photo = "https://static6.businessinsider.com/image/566ee7822340f838008b5601-1200/istanbul-turkey.jpg"
+
     return (
       <ScrollView style={styles.superContainer}>
         <View style={styles.container}>
-
-          <Text style={styles.title}>{this.props.story.title.toUpperCase()}</Text>
+          <Text style={styles.title}>{"The whole world in my hands".toUpperCase()}</Text>
           <Image source={{uri: photo}} style={{width: 400, height: 225}}/>
 
-          <Text style={styles.content}>{this.props.story.content}</Text>
+          <Text style={styles.content}>"I was at home when the telephone rang. It was my mother. She told me that there had been a bomb at the boys' school. I immediately tried to call the school, but nobody answered. Then I tried to call the bus driver but he didn't answer either. I imagined the worst. The roads were closed, so I couldn’t get to the school. All I could do was pace around the house. Finally the bus driver answered the phone and said that everyone was alive. The bomb had landed on the playground and only destroyed one wall of the school. After several hours the roads were reopened, and they came back home. When I hugged them, it felt like the whole world was in my hands."</Text>
 
           <TouchableHighlight onPress={this._onPressProfile.bind(this)} style={styles.button}>
             <Text style={styles.buttonText}>
-            {this.state.user.name + "'s " + I18n.t('profile')}
+            {"Mohammad Malouf's " + I18n.t('profile')}
             </Text>
           </TouchableHighlight>
         </View>
@@ -105,7 +100,7 @@ var styles = StyleSheet.create({
   content: {
     alignSelf: 'center',
     fontSize: 16,
-    fontFamily: 'Farah',
+    fontFamily: 'Avenir-Roman',
     marginTop: 10,
     marginBottom: 5,
     color: '#4a4c4d',
