@@ -9,12 +9,19 @@ import {
 } from 'react-native';
 
 export default class Enter extends Component{
+  goHome() {
+    this.props.navigator.push({
+      id: 'Home',
+      name: 'Home',
+    });
+  }
+  
   render() {
     return (
       <View style={styles.container}>
         <Image source={require('../images/simul_icon1.png')} style={styles.image}/>
         <Text style={styles.title}>SIMUL</Text>
-        <TouchableHighlight>
+        <TouchableHighlight onPress={this.goHome.bind(this)}>
           <Text style={styles.enter}>Enter</Text>
         </TouchableHighlight>
       </View>
