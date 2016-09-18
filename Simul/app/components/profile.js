@@ -8,6 +8,7 @@ import {
   ScrollView,
   Image,
   TextInput,
+  Linking,
 } from 'react-native';
 
 import Avatar from 'react-native-interactive-avatar';
@@ -92,14 +93,13 @@ class Profile extends Component{
 // fake person that works https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnl2wCrCFBw9PnHukDYg6weIBSIMdSi8vSguLE6tjaRcps8OOw
 
   async _onPressGive() {
-    let response = await fetch(`https://simulnos.herokuapp.com/api/users/2/donations`, {
+    let response = await fetch(`http://localhost:3000/api/donate`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-          user_id: 2,
           amount: this.state.amount,
       })
     })
@@ -111,15 +111,23 @@ class Profile extends Component{
         passProps: { userId: this.state.user_Id, message: res.message, name: this.state.name},
       })
   }
-  
+
+  // _onPressGive() {
+  //    Linking.openURL("https://payment.pay1.sandbox.poweredbyglobalcollect.com/checkout/2274-316f6698e73d4fd98ba38295ce1ba018:00000022740000000002:09b0c71b8b77475bb2a4b189fe81c99c")
+  //    .catch(err => console.error('An error occurred', err));
+  // }
   render() {
 
 
+//WORKING LINKING
+// {() =>{
+// Linking.openURL("https://payment.pay1.sandbox.poweredbyglobalcollect.com/checkout/2274-316f6698e73d4fd98ba38295ce1ba018:00000022740000000002:09b0c71b8b77475bb2a4b189fe81c99c")
+// .catch(err => console.error('An error occurred', err)); }}
     // var recentStory = this.props.stories.slice(-1)[0].content
 
     // if (this.props.user.photo !== null) {
-      var photo = "https://static6.businessinsider.com/image/566ee7822340f838008b5601-1200/istanbul-turkey.jpg"
     // }
+    var photo = "https://static6.businessinsider.com/image/566ee7822340f838008b5601-1200/istanbul-turkey.jpg"
 
     return (
       <ScrollView style={styles.superContainer}>
@@ -130,20 +138,20 @@ class Profile extends Component{
             interactive={true}
             onChange={this.handleImageChange}
             />
-        <Text style={styles.title}>{"Mohammad Malouf's " + I18n.t('profile')}</Text>
+          <Text style={styles.title}>{"Mohammad Malouf's " + I18n.t('profile')}</Text>
 
-        <Text>July 24th, 2016</Text>
-        <Text style={styles.newestStory}>"I was at home when the telephone rang. It was my mother. She told me that there had been a bomb at the boys' school. I immediately tried to call the school, but nobody answered. Then I tried to call the bus driver but he didn't answer either. I imagined the worst. The roads were closed, so I couldn’t get to the school. All I could do was pace around the house. Finally the bus driver answered the phone and said that everyone was alive. The bomb had landed on the playground and only destroyed one wall of the school. After several hours the roads were reopened, and they came back home. When I hugged them, it felt like the whole world was in my hands."</Text>
-        <Text style={styles.newestStoryArabic}></Text>
+          <Text>July 24th, 2016</Text>
+          <Text style={styles.newestStory}>"I was at home when the telephone rang. It was my mother. She told me that there had been a bomb at the boys' school. I immediately tried to call the school, but nobody answered. Then I tried to call the bus driver but he didn't answer either. I imagined the worst. The roads were closed, so I couldn’t get to the school. All I could do was pace around the house. Finally the bus driver answered the phone and said that everyone was alive. The bomb had landed on the playground and only destroyed one wall of the school. After several hours the roads were reopened, and they came back home. When I hugged them, it felt like the whole world was in my hands."</Text>
+          <Text style={styles.newestStoryArabic}></Text>
 
-        <View style={styles.personalInfo}>
-        <Text style={styles.personalInfoHeading}>{I18n.t('about')} Mohammad </Text>
-        <Text style={styles.personalInfoLocation}>Location: Istanbul, Turkey  </Text>
-        <Text style={styles.personalInfoResources}>Resources Requesting: Resume writing in English and money so I can buy puzzles/toys for my kids.</Text>
-        <Text style={styles.personalInfoSeeking}>Opportunities Seeking: Employment in electrical engineering. </Text>
-        <Text style={styles.personalInfoSkills}>Skills/Expertise: Rail electrification, power generation, transmission and distribution. </Text>
-        <Text style={styles.personalInfoBio}>Bio: "I love my children. They are my everything." </Text>
-        </View>
+          <View style={styles.personalInfo}>
+          <Text style={styles.personalInfoHeading}>{I18n.t('about')} Mohammad </Text>
+          <Text style={styles.personalInfoLocation}>Location: Istanbul, Turkey  </Text>
+          <Text style={styles.personalInfoResources}>Resources Requesting: Resume writing in English and money so I can buy puzzles/toys for my kids.</Text>
+          <Text style={styles.personalInfoSeeking}>Opportunities Seeking: Employment in electrical engineering. </Text>
+          <Text style={styles.personalInfoSkills}>Skills/Expertise: Rail electrification, power generation, transmission and distribution. </Text>
+          <Text style={styles.personalInfoBio}>Bio: "I love my children. They are my everything." </Text>
+          </View>
 
           <TouchableHighlight onPress={() => this._onPressUserStories()} style={styles.button}>
             <Text style={styles.buttonText}> {"All " + I18n.t('stories') + " by Mohammed"} </Text>
@@ -161,7 +169,9 @@ class Profile extends Component{
               placeholder="Enter amount in $"
               style={{ flex: 5, textAlign: 'center', backgroundColor: 'white', borderColor: '#27c2dc', borderWidth: 1}}
             />
-          <TouchableHighlight onPress={() => this._onPressGive()} style={styles.giveContainer}>
+          <TouchableHighlight onPress={ () => { Linking.openURL("https://payment.pay1.sandbox.poweredbyglobalcollect.com/checkout/2272-5de966225317465fb1674988eb4b26de:00000022720000000034:2d59fd12525f4ae29a1950a9cd8261c8")
+          .catch(err => console.error('An error occurred', err));
+       }} style={styles.giveContainer}>
               <Text style={styles.buttonGive}> Give </Text>
             </TouchableHighlight>
           </View>
@@ -176,12 +186,12 @@ class Profile extends Component{
               marginTop: 10,
               fontSize: 16,
               }}>Powered by</Text>
-          <View style={styles.poweredContainer}>
+            <View style={styles.poweredContainer}>
             <Image
               style={styles.ingenico}
               source={require('../images/global_ingenico.png')}
             />
-          </View>
+        </View>
       </View>
     </ScrollView>
     )
