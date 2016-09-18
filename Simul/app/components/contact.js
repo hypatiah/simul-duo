@@ -56,7 +56,7 @@ class Contact extends Component{
       <View style={styles.mainContainer}>
 
         <Text style={styles.title}>
-          {I18n.t('contact') + "Mohammad Malouf"}
+          {I18n.t('contact') + " Mohammad Malouf"}
         </Text>
         <TextInput
           onChangeText={ (val)=> this.setState({author: val}) }
