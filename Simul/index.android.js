@@ -10,10 +10,17 @@ import {
   StyleSheet,
   Text,
   View,
-  Navigator
+  Navigator,
 } from 'react-native';
 
 import Enter from './app/components/enter'
+import Home from './app/components/home'
+import Message from './app/components/message'
+import Profile from './app/components/profile'
+import Story from './app/components/story'
+import UserMessages from './app/components/userMessages'
+import UserStories from './app/components/userStories'
+
 
 class Simul extends Component {
   render() {
