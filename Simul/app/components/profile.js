@@ -8,6 +8,7 @@ import {
   ScrollView,
   Image,
   TextInput,
+  Linking,
 } from 'react-native';
 
 import Avatar from 'react-native-interactive-avatar';
@@ -91,28 +92,31 @@ class Profile extends Component{
 
 // fake person that works https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnl2wCrCFBw9PnHukDYg6weIBSIMdSi8vSguLE6tjaRcps8OOw
 
-  async _onPressGive() {
-    let response = await fetch(`https://simulnos.herokuapp.com/api/users/2/donations`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-          user_id: 2,
-          amount: this.state.amount,
-      })
-    })
-    let res = await response.json();
-      this.props.navigator.push({
-        title: 'Profile',
-        id: 'Profile',
-        tintColor: "#29c5da",
-        passProps: { userId: this.state.user_Id, message: res.message, name: this.state.name},
-      })
-  }
-  
-  render() {
+  // async _onPressGive() {
+  //   let response = await fetch(`https://simulnos.herokuapp.com/api/donate`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //         amount: this.state.amount,
+  //     })
+  //   })
+  //   let res = await response.json();
+  //     this.props.navigator.push({
+  //       title: 'Profile',
+  //       id: 'Profile',
+  //       tintColor: "#29c5da",
+  //       passProps: { userId: this.state.user_Id, message: res.message, name: this.state.name},
+  //     })
+  // }
+
+  // _onPressGive() {
+  //    Linking.openURL("https://payment.pay1.sandbox.poweredbyglobalcollect.com/checkout/2274-316f6698e73d4fd98ba38295ce1ba018:00000022740000000002:09b0c71b8b77475bb2a4b189fe81c99c")
+  //    .catch(err => console.error('An error occurred', err));
+  // }
+  // render() {
 
 
     // var recentStory = this.props.stories.slice(-1)[0].content
@@ -161,7 +165,9 @@ class Profile extends Component{
               placeholder="Enter amount in $"
               style={{ flex: 5, textAlign: 'center', backgroundColor: 'white', borderColor: '#27c2dc', borderWidth: 1}}
             />
-          <TouchableHighlight onPress={() => this._onPressGive()} style={styles.giveContainer}>
+          <TouchableHighlight onPress={ () =>{
+     Linking.openURL("https://payment.pay1.sandbox.poweredbyglobalcollect.com/checkout/2274-316f6698e73d4fd98ba38295ce1ba018:00000022740000000002:09b0c71b8b77475bb2a4b189fe81c99c")
+     .catch(err => console.error('An error occurred', err)); }} style={styles.giveContainer}>
               <Text style={styles.buttonGive}> Give </Text>
             </TouchableHighlight>
           </View>
