@@ -147,7 +147,7 @@ class Profile extends Component{
           <View style={styles.personalInfo}>
           <Text style={styles.personalInfoHeading}>{I18n.t('about')} Mohammad </Text>
           <Text style={styles.personalInfoLocation}>Location: Istanbul, Turkey  </Text>
-          <Text style={styles.personalInfoResources}>Resources Requesting: Resume writing in English and money so I can buy puzzles/toys for my kids.</Text>
+          <Text style={styles.personalInfoResources}>Resources Requesting: I would like help writing my resume in English and funds to buy puzzles and toys for my kids.</Text>
           <Text style={styles.personalInfoSeeking}>Opportunities Seeking: Employment in electrical engineering. </Text>
           <Text style={styles.personalInfoSkills}>Skills/Expertise: Rail electrification, power generation, transmission and distribution. </Text>
           <Text style={styles.personalInfoBio}>Bio: "I love my children. They are my everything." </Text>
