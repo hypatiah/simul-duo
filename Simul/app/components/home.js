@@ -48,7 +48,7 @@ class Home extends Component{
   _onPressLogin() {
     this.props.navigator.push({
       title: I18n.t('login'),
-      component: Login,
+      id: 'Login',
       tintColor: "#29c5da",
     })
   }
@@ -77,7 +77,7 @@ class Home extends Component{
   _onPressRegister() {
     this.props.navigator.push({
       title: I18n.t('register'),
-      component: Register,
+      id: 'Register',
       tintColor: "#29c5da",
     })
   }
@@ -94,7 +94,7 @@ class Home extends Component{
   _onPressUserStories() {
     this.props.navigator.push({
       title: I18n.t('stories'),
-      component: UserStories,
+      id: 'UserStories',
       tintColor: "#29c5da",
     })
   }
