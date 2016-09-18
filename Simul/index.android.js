@@ -23,32 +23,74 @@ import UserStories from './app/components/userStories'
 
 
 class Simul extends Component {
+  renderScene(route, navigator) {
+    var routeId = route.id;
+    if (routeId === 'Enter') {
+      return (
+        <Enter
+          navigator={navigator} />
+      );
+    }
+    if (routeId === 'Home') {
+      return (
+        <Home
+          navigator={navigator} />
+      );
+    }
+    if (routeId === 'Message') {
+      return (
+        <Message
+            navigator={navigator} />
+      );
+    }
+    if (routeId === 'Profile') {
+      return (
+        <Profile
+          navigator={navigator} />
+      );
+    }
+    if (routeId === 'Story') {
+      return (
+        <Story
+            navigator={navigator} />
+      );
+    }
+    if (routeId === 'UserMessages') {
+      return (
+        <UserMessages
+            navigator={navigator} />
+      );
+    }
+    if (routeId === 'UserStories') {
+      return (
+        <UserStories
+            navigator={navigator} />
+      );
+    }
+    return this.noRoute(navigator);
+
+  }
+  noRoute(navigator) {
+    return (
+      <View style={{flex: 1, alignItems: 'stretch', justifyContent: 'center'}}>
+        <TouchableOpacity style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}
+            onPress={() => navigator.pop()}>
+          <Text style={{color: 'red', fontWeight: 'bold'}}>NO ROUTE ERROR</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
   render() {
     return (
       <Navigator
-        initialRoute={{ title: 'Enter', index: 0 }}
-        renderScene={(route, navigator) => {
-          return (
-            <Enter
-             title={route.title}
-
-             onForward={ () => {
-               const nextIndex = route.index + 1;
-               navigator.push({
-                 title: 'Scene ' + nextIndex,
-                 index: nextIndex,
-               });
-             }}
-
-             onBack={() => {
-               if (route.index > 0) {
-                 navigator.pop();
-               }
-             }}
-           />
-          )
-        }}
-      />
+          initialRoute={{id: 'Enter', name: 'Enter'}}
+          renderScene={this.renderScene.bind(this)}
+          configureScene={(route) => {
+            if (route.sceneConfig) {
+              return route.sceneConfig;
+            }
+            return Navigator.SceneConfigs.FloatFromRight;
+          }} />
     );
   }
 }
