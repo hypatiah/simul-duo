@@ -21,7 +21,7 @@ import Profile from './app/components/profile'
 import Story from './app/components/story'
 import UserMessages from './app/components/userMessages'
 import UserStories from './app/components/userStories'
-
+import Contact from './app/components/contact'
 import I18n from 'react-native-i18n'
 
 I18n.fallbacks = true;
@@ -133,6 +133,12 @@ class Simul extends Component {
     if (routeId === 'Message') {
       return (
         <Message
+            navigator={navigator} />
+      );
+    }
+    if (routeId === 'Contact') {
+      return (
+        <Contact
             navigator={navigator} />
       );
     }
